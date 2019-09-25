@@ -12,11 +12,15 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 import { environment } from '../environments/environment';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LoginComponent } from './components/login/login.component';
+import { DatabaseService } from './fire-service/database.service';
+import { AuthService } from './fire-service/auth.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     AngularFirestoreModule,
     AngularFireAuthModule
   ],
-  providers: [],
+  providers: [DatabaseService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

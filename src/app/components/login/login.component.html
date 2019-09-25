@@ -1,0 +1,10 @@
+<div *ngIf="user; else showLogin">
+  <h1>Hello {{ user.displayName }}!</h1>
+  <button (click)="FireLogout()">Logout</button>
+</div>
+<ng-template #showLogin>
+  <p>Please login.</p>
+  <button (click)="loginEmail()">Login with email</button><br>
+  <button (click)="loginGoogle()">Login with Google</button><br>
+  <button (click)="loginFacebook()">Login with Facebook</button>
+</ng-template>
