@@ -15,6 +15,9 @@ export class AuthService {
   loginEmail(email, pass) {
     this.afAuth.auth.signInWithEmailAndPassword(email, pass);
   }
+  createUser(email, pass) {
+    this.afAuth.auth.createUserWithEmailAndPassword(email, pass);
+  }
   loginGoogle() {
     this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }
