@@ -1,0 +1,58 @@
+<!-- FireStore -->
+<div class="container">
+
+  <div class="row mb-3 mt-3">
+    <div class="col-md-3 mb-3">
+      <input type="text" class="form-control" [(ngModel)]="courseName" placeholder="Name">
+    </div>
+    <div class="col-md-3 mb-3">
+      <input type="number" class="form-control" [(ngModel)]="courseTime" placeholder="Time">
+    </div>
+    <div class="col-md-3">
+      <button type="button" (click)="CreateRecord()" [disabled]="!courseName || !courseTime" class="btn btn-primary">Create course</button>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-3 mb-3">
+      <div class="card mb-3" style="width: 18rem;" *ngFor="let item of courses">
+
+        <div class="card-body" *ngIf="!item.isEdit; else elseBlock">
+          <h5 class="card-title mb-3">Name: {{item.Name}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted mb-3">Time: {{item.Time}} hs</h6>
+          <a href="#" class="card-link" (click)="EditRecord(item)">Edit</a>
+          <a href="#" class="card-link text-danger" (click)="RemoveRecord(item.id)">Delete</a>
+        </div>
+
+        <ng-template #elseBlock>
+          <div class="card-body">
+            <h5 class="card-title">Edit</h5>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-12 mb-3">
+                  <input type="text" class="form-control" [(ngModel)]="item.EditName" placeholder="Edit Name">
+                </div>
+                <div class="col-md-12">
+                  <input type="number" class="form-control" [(ngModel)]="item.EditTime" placeholder="Edit Time">
+                </div>
+              </div>
+            </div>
+
+            <a href="#" class="card-link" (click)="item.isEdit = false">Cancel</a>
+            <a href="#" class="card-link text-success" (click)="UpdateRecord(item)">Update</a>
+          </div>
+        </ng-template>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Firebase RealTime Database -->
+<!-- <ul *ngFor="let rtdb of rtdbs">
+  <li>
+    name: {{rtdb.name}}
+    <br>
+    time: {{rtdb.time}}
+  </li>
+</ul> -->
